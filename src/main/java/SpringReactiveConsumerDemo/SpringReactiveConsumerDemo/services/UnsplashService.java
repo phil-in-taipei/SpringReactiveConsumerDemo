@@ -31,7 +31,8 @@ public class UnsplashService {
                 .uri(uri -> uri
                         .queryParam("page", "1")
                         .queryParam("query", searchText)
-                        .queryParam("client_id", secret).build())
+                        //.queryParam("client_id", secret)
+                        .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve().bodyToMono(UnsplashResponse.class)
                 .map(UnsplashResponse::getTotalPages)
@@ -43,7 +44,7 @@ public class UnsplashService {
                 .uri(uri -> uri
                         .queryParam("page", pageNumber)
                         .queryParam("query", searchText)
-                        .queryParam("client_id", secret)
+                        //.queryParam("client_id", secret)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
                 .retrieve()

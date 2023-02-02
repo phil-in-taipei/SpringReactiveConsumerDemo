@@ -24,7 +24,7 @@ public class ClientConfig {
     public WebClient webClient() {
         return WebClient.builder()
                 .baseUrl(searchUri.toString())
-                //.defaultHeader(HttpHeaders.AUTHORIZATION, secret)
+                .defaultHeader(HttpHeaders.AUTHORIZATION, secret)
                 .build();
     }
 }
