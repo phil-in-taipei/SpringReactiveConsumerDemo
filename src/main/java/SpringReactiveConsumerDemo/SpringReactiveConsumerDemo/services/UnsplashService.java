@@ -44,40 +44,19 @@ public class UnsplashService {
                 .map(Integer::valueOf);
     }
 
-    /*
-    public void getCount(String searchText) {
+    public Mono<Integer> getTotal(String searchText) {
         return webClient.get()
                 .uri(uri -> uri
                         .queryParam("page", "1")
                         .queryParam("query", searchText)
                         .queryParam("orientation", "squarish")
                         //.queryParam("client_id", secret)
-                        .build());
-                .accept(MediaType.APPLICATION_JSON)
-                .retrieve.bodyToMono(UnsplashResponse.class).block();
-    }
-    */
-    /*
-
-    public void getTotal(String searchText) {
-        System.out.println("****************This is the url for the search:" + "**********");
-        System.out.println(url + "?query=" + searchText + "&client_id=" + secret);
-        UnsplashResponse response = webClient.get()
-                .uri(uri -> uri
-                        //.queryParam("page", pageNumber)
-                        .queryParam("query", searchText)
-                        .queryParam("orientation", "squarish")
-                        //.queryParam("client_id", secret)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
-                .retrieve()
-                .bodyToMono(UnsplashResponse.class).block();
-        //System.out.println(response);
-        //String urlString = url + "?query=" + searchText + "&client_id=" + secret;
-        //UnsplashResponse response = restTemplate.getForObject(urlString, UnsplashResponse.class);
+                .retrieve().bodyToMono(UnsplashResponse.class)
+                .map(UnsplashResponse::getTotal)
+                .map(Integer::valueOf);
     }
-
-     */
 
 
     public Mono<UnsplashResponse> searchUnsplash(String searchText, int pageNumber, String orientation) {

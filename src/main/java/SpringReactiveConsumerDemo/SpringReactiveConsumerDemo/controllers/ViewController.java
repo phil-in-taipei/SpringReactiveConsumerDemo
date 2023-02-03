@@ -26,18 +26,17 @@ public class ViewController {
 
     @PostMapping("/")
     public String performSearch(@ModelAttribute("searchKeyword") SearchKeyword searchKeyword, Model model) {
-        System.out.println("****************Trying to get the count********************");
-        //unsplashService.getTotal(searchKeyword.getText());
-        //int count = unsplashService.getTotal(searchKeyword.getText());
-        //System.out.println(count);
-
-        // PUT an if/else statement here and another webclient for the other website/service
         ReactiveDataDriverContextVariable reactiveData =
-                new ReactiveDataDriverContextVariable(unsplashService.getPhotos(searchKeyword.getText(), searchKeyword.getOrientation()), 1);
+                new ReactiveDataDriverContextVariable(
+                        unsplashService.getPhotos(
+                                searchKeyword.getText(),
+                                searchKeyword.getOrientation()), 1);
+        //ReactiveDataDriverContextVariable countData =
+        //        new ReactiveDataDriverContextVariable(unsplashService.getTotal(searchKeyword.getText()));
+
         model.addAttribute("photos", reactiveData);
-        //model.addAttribute("size", unsplashService.getTotal(searchKeyword.getText()));
         model.addAttribute("searchText", searchKeyword.getText());
-        //model.addAttribute("orientation", searchKeyword.getOrientation());
+        //model.addAttribute("count", countData);
         return "index";
     }
 
