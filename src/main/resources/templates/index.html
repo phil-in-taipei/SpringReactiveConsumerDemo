@@ -22,17 +22,24 @@
             <div class="input-group">
                 <span class="input-group-text">Keywords:</span>
                 <input type="text" class="form-control" th:field="*{text}" th:value="${searchText}">
+                <span class="input-group-text">Orientation:</span>
+                <select th:field="*{orientation}">
+                    <option th:value="'landscape'" th:text="Landscape"></option>
+                    <option th:value="'portrait'" th:text="Portrait"></option>
+                    <option th:value="'squarish'" th:text="Squarish"></option>
+                </select>
                 <button class="btn btn-info" type="submit">Search!</button>
             </div>
         </form>
     </div>
     <div class="row justify-content-center" data-masonry='{"percentPosition": true, "itemSelector": ".col-6"}'>
-        <h2 th:text="${photos}"></h2>
-        <h1 text="${photosStat.count}"></h1>
+        <!--<h2 th:text="${photos}"></h2> -->
+        <!--<h1 text="${photos.photosStat.count}"></h1> -->
         <!-- <h2 th:text="${size}"></h2> -->
+        <h6>0</h6>
         <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-2 d-flex"
-        th:each="photo: ${photos}">
-            <h1 text="${photoStat.count}"></h1>
+        th:each="photo, iStat: ${photos}">
+            <h1 text="${iStat}"></h1>
             <img class="rounded img-fluid"
                  th:src="${photo.urls.thumb}" th:alt="${photo.description}"
             >
