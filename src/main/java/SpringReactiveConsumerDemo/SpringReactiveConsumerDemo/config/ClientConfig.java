@@ -27,4 +27,12 @@ public class ClientConfig {
                 .defaultHeader(HttpHeaders.AUTHORIZATION, secret)
                 .build();
     }
+
+    @Bean
+    public WebClient webClient2() {
+        return WebClient.builder()
+                .baseUrl(searchUri.toString())
+                .defaultHeader(HttpHeaders.AUTHORIZATION, secret)
+                .build();
+    }
 }

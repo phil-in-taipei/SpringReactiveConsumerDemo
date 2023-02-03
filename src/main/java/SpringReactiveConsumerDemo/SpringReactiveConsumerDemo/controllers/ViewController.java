@@ -30,6 +30,8 @@ public class ViewController {
         //unsplashService.getTotal(searchKeyword.getText());
         //int count = unsplashService.getTotal(searchKeyword.getText());
         //System.out.println(count);
+
+        // PUT an if/else statement here and another webclient for the other website/service
         ReactiveDataDriverContextVariable reactiveData =
                 new ReactiveDataDriverContextVariable(unsplashService.getPhotos(searchKeyword.getText(), searchKeyword.getOrientation()), 1);
         model.addAttribute("photos", reactiveData);
