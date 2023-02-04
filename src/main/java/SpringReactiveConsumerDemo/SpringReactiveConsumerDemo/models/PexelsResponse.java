@@ -18,7 +18,6 @@ public class PexelsResponse {
     private int perPage;
     @JsonProperty("total_results")
     private int totalResults;
-    // per_page=20 -- will have to divide to get the amount of pages
 
     @JsonProperty("photos")
     private List<PexelPhoto> photos;

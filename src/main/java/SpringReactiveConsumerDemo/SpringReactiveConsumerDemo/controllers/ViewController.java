@@ -51,12 +51,8 @@ public class ViewController {
                                     searchKeyword.getOrientation()), 1);
         }
 
-        //ReactiveDataDriverContextVariable countData =
-        //        new ReactiveDataDriverContextVariable(unsplashService.getTotal(searchKeyword.getText()));
-
         model.addAttribute("photos", reactiveData);
         model.addAttribute("searchText", searchKeyword.getText());
-        //model.addAttribute("count", countData);
         return "index";
     }
 

@@ -27,9 +27,10 @@ public class PexelsService {
     private String url;
 
     public Flux<PexelPhoto> getPhotos(String searchText, String orientation) {
-        System.out.println("***********Getting Photos in Pexel*****************");
         return getTotalResults(searchText, orientation)
                 // try something here to check if the getTotal value is zero, and if so abort
+                // Note: t is divided by 15 because number of queries per page
+                // Pexel doesn't have an absolute number of pages like Unsplash
                 .flatMapMany(t -> Flux.range(1, t > 2 ? 2 : t/15))
                 .flatMap(f -> searchPexel(searchText, f, orientation)
                         .flatMapIterable(PexelsResponse::getPhotos), 5);
