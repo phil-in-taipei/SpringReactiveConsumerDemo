@@ -16,4 +16,16 @@ public class Photo {
     private String color;
     private String description;
     private Urls urls;
+
+    @Override
+    public String toString() {
+        return "Photo{" +
+                "id='" + id + '\'' +
+                ", width=" + width +
+                ", height=" + height +
+                ", color='" + color + '\'' +
+                ", description='" + description + '\'' +
+                ", urls=" + urls.toString() +
+                '}';
+    }
 }

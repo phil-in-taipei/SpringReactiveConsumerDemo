@@ -19,4 +19,16 @@ public class Urls {
     String thumb;
     @JsonProperty("small_s3")
     private String smallS3;
+
+    @Override
+    public String toString() {
+        return "Urls{" +
+                "raw='" + raw + '\'' +
+                ", full='" + full + '\'' +
+                ", regular='" + regular + '\'' +
+                ", small='" + small + '\'' +
+                ", thumb='" + thumb + '\'' +
+                ", smallS3='" + smallS3 + '\'' +
+                '}';
+    }
 }

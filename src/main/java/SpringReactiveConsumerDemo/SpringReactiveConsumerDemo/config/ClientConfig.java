@@ -17,8 +17,14 @@ public class ClientConfig {
     @Value("${search.uri}")
     private URI searchUri;
 
+    @Value("${search.uri2}")
+    private URI searchUri2;
+
     @Value("${api.client-id}")
     private String secret;
+
+    @Value("${api.client-id2}")
+    private String secret2;
 
     @Bean
     public WebClient webClient() {
@@ -31,8 +37,8 @@ public class ClientConfig {
     @Bean
     public WebClient webClient2() {
         return WebClient.builder()
-                .baseUrl(searchUri.toString())
-                .defaultHeader(HttpHeaders.AUTHORIZATION, secret)
+                .baseUrl(searchUri2.toString())
+                .defaultHeader(HttpHeaders.AUTHORIZATION, secret2)
                 .build();
     }
 }

@@ -24,19 +24,19 @@ public class UnsplashService {
     private String url;
 
     public Flux<Photo> getPhotos(String searchText, String orientation) {
-        return getTotalPages(searchText)
+        return getTotalPages(searchText, orientation)
                 // try something here to check if the getTotal value is zero, and if so abort
                 .flatMapMany(t -> Flux.range(1, t > 2 ? 2 : t))
                 .flatMap(f -> searchUnsplash(searchText, f, orientation)
                         .flatMapIterable(UnsplashResponse::getResults), 5);
     }
 
-    public Mono<Integer> getTotalPages(String searchText) {
+    public Mono<Integer> getTotalPages(String searchText, String orientation) {
         return webClient.get()
                 .uri(uri -> uri
                         .queryParam("page", "1")
                         .queryParam("query", searchText)
-                        .queryParam("orientation", "squarish")
+                        .queryParam("orientation", orientation)
                         //.queryParam("client_id", secret)
                         .build())
                 .accept(MediaType.APPLICATION_JSON)
