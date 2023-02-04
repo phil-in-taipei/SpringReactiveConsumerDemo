@@ -25,6 +25,7 @@ public class UnsplashService {
 
     public Flux<Photo> getPhotos(String searchText, String orientation) {
         return getTotalPages(searchText)
+                // try something here to check if the getTotal value is zero, and if so abort
                 .flatMapMany(t -> Flux.range(1, t > 2 ? 2 : t))
                 .flatMap(f -> searchUnsplash(searchText, f, orientation)
                         .flatMapIterable(UnsplashResponse::getResults), 5);
