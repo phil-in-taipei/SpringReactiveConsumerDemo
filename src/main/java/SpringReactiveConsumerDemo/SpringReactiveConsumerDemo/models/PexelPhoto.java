@@ -1,11 +1,22 @@
 package SpringReactiveConsumerDemo.SpringReactiveConsumerDemo.models;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.util.List;
+
+@Getter
+@Setter
+@NoArgsConstructor
 public class PexelPhoto {
-    private double id;
-    private double width;
-    private double height;
+    @JsonProperty("id")
+    private Long id;
+    @JsonProperty("width")
+    private Long width;
+    @JsonProperty("height")
+    private Long height;
     @JsonProperty("avg_color")
     private String color;
 
@@ -24,5 +35,6 @@ public class PexelPhoto {
                 '}';
     }
 
+    @JsonProperty("alt")
     private String description;
 }
